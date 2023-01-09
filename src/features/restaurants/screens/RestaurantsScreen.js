@@ -1,16 +1,12 @@
 import React from "react";
-import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfo } from "../components/RestaurantInfo";
-import {
-  RestaurantScreenSafeArea,
-  RestaurantSearch,
-  RestaurantList,
-} from "./RestaurantScreen.styles";
+import { RestaurantSearch, RestaurantList } from "./RestaurantScreen.styles";
 import { Spacer } from "../../../components/spacer/spacerComponent";
+import { SafeArea } from "../../../components/utility/SafeAreaComponent";
 
 export const RestaurantsScreen = () => (
-  <RestaurantScreenSafeArea>
+  <SafeArea>
     <RestaurantSearch>
       <Searchbar />
     </RestaurantSearch>
@@ -39,5 +35,5 @@ export const RestaurantsScreen = () => (
       keyExtractor={(item) => item.name}
       // contentContainerStyle={{ padding: 16 }}
     />
-  </RestaurantScreenSafeArea>
+  </SafeArea>
 );
