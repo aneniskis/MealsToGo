@@ -1,39 +1,38 @@
-import React from "react";
-import { Searchbar } from "react-native-paper";
+import React, { useContext } from "react";
 import { RestaurantInfo } from "../components/RestaurantInfo";
-import { RestaurantSearch, RestaurantList } from "./RestaurantScreen.styles";
+import { RestaurantList, Loading } from "./RestaurantScreen.styles";
 import { Spacer } from "../../../components/spacer/spacerComponent";
 import { SafeArea } from "../../../components/utility/SafeAreaComponent";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/SearchComponent";
+import { TouchableOpacity } from "react-native";
 
-export const RestaurantsScreen = () => (
-  <SafeArea>
-    <RestaurantSearch>
-      <Searchbar />
-    </RestaurantSearch>
-    <RestaurantList
-      data={[
-        { name: 1 },
-        { name: 2 },
-        { name: 3 },
-        { name: 4 },
-        { name: 5 },
-        { name: 6 },
-        { name: 7 },
-        { name: 8 },
-        { name: 9 },
-        { name: 10 },
-        { name: 11 },
-        { name: 12 },
-        { name: 13 },
-        { name: 14 },
-      ]}
-      renderItem={() => (
-        <Spacer position="bottom" size="large">
-          <RestaurantInfo />
-        </Spacer>
+export const RestaurantsScreen = ({ navigation }) => {
+  // const restaurantContext = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  // console.log(error);
+  // console.log(restaurantContext);
+  return (
+    <SafeArea>
+      <Search />
+      {isLoading && <Loading size={"large"} color="#D0421B" />}
+      {!isLoading && (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", { restaurant: item })
+              }
+            >
+              <Spacer position="bottom" size="large">
+                <RestaurantInfo restaurant={item} />
+              </Spacer>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.name}
+        />
       )}
-      keyExtractor={(item) => item.name}
-      // contentContainerStyle={{ padding: 16 }}
-    />
-  </SafeArea>
-);
+    </SafeArea>
+  );
+};
