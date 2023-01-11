@@ -10,6 +10,21 @@ import { theme } from "./src/infrastructure/theme/index";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { Navigation } from "./src/infrastructure/navigation";
+import { FavouritesContextProvider } from "./src/services/favourite/favouriteContext";
+import { initializeApp } from "firebase/app";
+import { AuthenticationContextProvider } from "./src/services/authentication/authenticationContext";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB-MLYRxnLLWYVH9RB7g-7nmK0Nn3oojd8",
+  authDomain: "mealstogo-aa8e1.firebaseapp.com",
+  projectId: "mealstogo-aa8e1",
+  storageBucket: "mealstogo-aa8e1.appspot.com",
+  messagingSenderId: "586343985634",
+  appId: "1:586343985634:web:945025510af7be402c09bb",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -25,11 +40,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

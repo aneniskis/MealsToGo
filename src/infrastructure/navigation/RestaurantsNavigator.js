@@ -22,6 +22,7 @@ export const RestaurantsNavigator = () => {
       <RestaurantStack.Screen
         name="RestaurantDetail"
         component={RestaurantDetailsScreen}
+        screenOptions={{ cardStyle: { borderRadius: "none" } }}
       />
     </RestaurantStack.Navigator>
   );
