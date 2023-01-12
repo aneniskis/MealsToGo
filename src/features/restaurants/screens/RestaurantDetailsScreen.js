@@ -22,7 +22,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
             left={(props) => <List.Icon {...props} icon="bread-slice" />}
             expanded={breakfastExpanded}
             onPress={() => setBreakfastExpanded(!breakfastExpanded)}
-            style={{ backgroundColor: `${colors.bg.secondary}` }}
+            // style={{ backgroundColor: `${colors.bg.secondary}` }}
           >
             <List.Item title="Eggs Benedict" />
             <List.Item title="Classic Breakfast" />
@@ -33,7 +33,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
             left={(props) => <List.Icon {...props} icon="hamburger" />}
             expanded={lunchExpanded}
             onPress={() => setLunchExpanded(!lunchExpanded)}
-            style={{ backgroundColor: `${colors.bg.secondary}` }}
+            // style={{ backgroundColor: `${colors.bg.secondary}` }}
           >
             <List.Item title="Burger w/ Fries" />
             <List.Item title="Steak Sandwich" />
@@ -45,7 +45,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
             left={(props) => <List.Icon {...props} icon="food-variant" />}
             expanded={dinnerExpanded}
             onPress={() => setDinnerExpanded(!dinnerExpanded)}
-            style={{ backgroundColor: `${colors.bg.secondary}` }}
+            // style={{ backgroundColor: `${colors.bg.secondary}` }}
           >
             <List.Item title="Spaghetti Bolognese" />
             <List.Item title="Veal Cutlet with Chicken Mushroom Rotini" />
@@ -57,7 +57,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
             left={(props) => <List.Icon {...props} icon="cup" />}
             expanded={drinksExpanded}
             onPress={() => setDrinksExpanded(!drinksExpanded)}
-            style={{ backgroundColor: `${colors.bg.secondary}` }}
+            // style={{ backgroundColor: `${colors.bg.secondary}` }}
           >
             <List.Item title="Coffee" />
             <List.Item title="Tea" />
