@@ -8,6 +8,7 @@ import { Search } from "../components/SearchComponent";
 import { TouchableOpacity } from "react-native";
 import { FavouritesBar } from "../../../components/favourites/favouriteBarComponent";
 import { FavouritesContext } from "../../../services/favourite/favouriteContext";
+import { FadeInView } from "../../../components/animations/fadeAnimation";
 
 export const RestaurantsScreen = ({ navigation }) => {
   // const restaurantContext = useContext(RestaurantsContext);
@@ -39,7 +40,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfo restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfo restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           )}
