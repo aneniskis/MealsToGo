@@ -1,10 +1,11 @@
 import camelize from "camelize";
+// import { host } from "../../utils/env";
 
 // import { locations } from "../../../functions/geocode/geocode.mock";
 
 export const locationRequest = async (searchTerm) => {
   const res = await fetch(
-    `http://64a1-78-57-124-214.ngrok.io/mealstogo-aa8e1/us-central1/geocode?city=${searchTerm}`
+    `https://us-central1-mealstogo-aa8e1.cloudfunctions.net/geocode?city=${searchTerm}`
   );
   // console.log(res.json());
   return await res.json();
